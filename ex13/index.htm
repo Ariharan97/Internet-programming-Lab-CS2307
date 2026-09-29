@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping - Order Viewer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eef2ff, #dbeafe);
+            padding: 40px 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+        }
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .header h1 {
+            color: #1e293b;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+        .header p {
+            color: #64748b;
+            font-size: 14px;
+        }
+        .button-area {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 13px 30px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th {
+            background: #2563eb;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        td {
+            padding: 14px 15px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+        }
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        tr:hover {
+            background: #eff6ff;
+        }
+        .price {
+            font-weight: bold;
+            color: #16a34a;
+        }
+        .status {
+            text-align: center;
+            color: #64748b;
+            padding: 20px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+        @media screen and (max-width: 700px) {
+            .card {
+                padding: 20px;
+            }
+            .header h1 {
+                font-size: 24px;
+            }
+            th, td {
+                padding: 10px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1>Online Shopping - Order Viewer</h1>
+                <p>Asynchronous Client-Server Interaction using AJAX and XML</p>
+            </div>
+            <div class="button-area">
+                <button onclick="loadOrders()">Load Orders</button>
+            </div>
+            <div id="orderData">
+                <div class="status">
+                    Click "Load Orders" to display order details.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadOrders() {
+            var request = new XMLHttpRequest();
+            request.open("GET", "orders.xml", true);
+            request.onreadystatechange = function () {
+                if (request.readyState == 4 && request.status == 200) {
+                    var xml = request.responseXML;
+                    var orders = xml.getElementsByTagName("order");
+                    
+                    var output = "<table>";
+                    output += "<tr>";
+                    output += "<th>Order ID</th>";
+                    output += "<th>Customer Name</th>";
+                    output += "<th>Product</th>";
+                    output += "<th>Quantity</th>";
+                    output += "<th>Price</th>";
+                    output += "</tr>";
+
+                    for (var i = 0; i < orders.length; i++) {
+                        var order = orders[i];
+                        var id = order.getElementsByTagName("id")[0].textContent;
+                        var customer = order.getElementsByTagName("customer")[0].textContent;
+                        var product = order.getElementsByTagName("product")[0].textContent;
+                        var quantity = order.getElementsByTagName("quantity")[0].textContent;
+                        var price = order.getElementsByTagName("price")[0].textContent;
+
+                        output += "<tr>";
+                        output += "<td>" + id + "</td>";
+                        output += "<td>" + customer + "</td>";
+                        output += "<td>" + product + "</td>";
+                        output += "<td>" + quantity + "</td>";
+                        output += "<td>₹" + price + "</td>";
+                        output += "</tr>";
+                    }
+
+                    output += "</table>";
+                    document.getElementById("orderData").innerHTML = output;
+                }
+            };
+            request.send();
+        }
+    </script>
+</body>
+</html>
