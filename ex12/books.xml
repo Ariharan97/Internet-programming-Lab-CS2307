@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+    <book>
+        <title>Clean Code</title>
+        <author>Robert C. Martin</author>
+        <year>2008</year>
+        <price>18.99</price>
+    </book>
+    <book>
+        <title>Python Crash Course</title>
+        <author>Eric Matthes</author>
+        <year>2019</year>
+        <price>22.50</price>
+    </book>
+    <book>
+        <title>Deep Work</title>
+        <author>Cal Newport</author>
+        <year>2016</year>
+        <price>14.75</price>
+    </book>
+    <book>
+        <title>Think and Grow Rich</title>
+        <author>Napoleon Hill</author>
+        <year>1937</year>
+        <price>11.99</price>
+    </book>
+    <book>
+        <title>Ikigai</title>
+        <author>Hector Garcia</author>
+        <year>2016</year>
+        <price>13.25</price>
+    </book>
+    <book>
+        <title>Introduction to Algorithms</title>
+        <author>Thomas H. Cormen</author>
+        <year>2009</year>
+        <price>35.99</price>
+    </book>
+    <book>
+        <title>Zero to One</title>
+        <author>Peter Thiel</author>
+        <year>2014</year>
+        <price>16.49</price>
+    </book>
+    <book>
+        <title>Digital Fortress</title>
+        <author>Dan Brown</author>
+        <year>1998</year>
+        <price>12.99</price>
+    </book>
+    <book>
+        <title>The Psychology of Money</title>
+        <author>Morgan Housel</author>
+        <year>2020</year>
+        <price>15.50</price>
+    </book>
+    <book>
+        <title>Wings of Fire</title>
+        <author>A. P. J. Abdul Kalam</author>
+        <year>1999</year>
+        <price>10.99</price>
+    </book>
+</library>
